@@ -1,5 +1,3 @@
 [profile.release]
 debug = false
-
-[target.'cfg(windows)'.dependencies.webrtc-sys]
-rustcflags = ["-C", "runtime-lib=md"]
+rustcflags = ["-C", "target-feature=+crt-static"]
