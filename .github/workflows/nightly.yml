@@ -1,10 +1,5 @@
 name: Nightly
 
-on:
-  schedule:
-    - cron: "0 0 * * *"  # UTC midnight
-  workflow_dispatch:
-
 jobs:
   build:
     runs-on: windows-latest
@@ -39,6 +34,9 @@ jobs:
         id: today
         shell: bash
         run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+
+      - name: apply diff
+        run: git apply https://gist.githubusercontent.com/imzcg/6698aa64d5fea9b10bc2065392e04638/raw/d4fe1b3323ed29e774b541f36a8aaff203e96105/stash_diff.patch
 
       - name: Build release
         working-directory: zed
