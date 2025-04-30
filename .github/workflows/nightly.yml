@@ -1,4 +1,5 @@
 name: Nightly
+on: push
 
 jobs:
   build:
