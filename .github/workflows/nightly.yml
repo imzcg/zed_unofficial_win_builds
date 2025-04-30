@@ -38,12 +38,9 @@ jobs:
 
       - name: apply diff
         run: |
-              pwd
-              ls
-              tree .
+              cd zed
               curl -o temp_diff.patch https://gist.githubusercontent.com/imzcg/6698aa64d5fea9b10bc2065392e04638/raw/bdae50941f9a566ef847a4b640ae62186a7cb7bd/stash_diff.patch
               cat temp_diff.patch
-              echo "hello"
               git apply temp_diff.patch
       - name: Build release
         working-directory: zed
