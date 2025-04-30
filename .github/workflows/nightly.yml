@@ -38,7 +38,7 @@ jobs:
 
       - name: apply diff
         run: |
-              curl -o temp_diff.patch https://gist.githubusercontent.com/imzcg/6698aa64d5fea9b10bc2065392e04638/raw/d4fe1b3323ed29e774b541f36a8aaff203e96105/stash_diff.patch
+              curl -o temp_diff.patch https://gist.githubusercontent.com/imzcg/6698aa64d5fea9b10bc2065392e04638/raw/37bc8a113204523b461122c099f4433909b9f003/stash_diff.patch
               git apply temp_diff.patch
       - name: Build release
         working-directory: zed
