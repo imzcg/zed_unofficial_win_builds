@@ -42,7 +42,8 @@ jobs:
               curl -o temp_diff.patch https://gist.githubusercontent.com/imzcg/6698aa64d5fea9b10bc2065392e04638/raw/bdae50941f9a566ef847a4b640ae62186a7cb7bd/stash_diff.patch
               cat temp_diff.patch
               git apply temp_diff.patch
-      -name: add config
+      - name: add config
+        shell: bash
         run: if [ -f ~/.cargo/config.toml ]; then echo "文件存在"; else echo "文件不存在，将创建该文件"; mkdir -p ~/.cargo; touch ~/.cargo/config.toml; fi; echo "[profile.release]" >> ~/.cargo/config.toml; echo "debug = false" >> ~/.cargo/config.toml; echo 'rustcflags = ["-C", "target-feature=+crt-static"]' >> ~/.cargo/config.toml; echo "内容已成功追加到 ~/.cargo/config.toml 文件中"
       - name: Build release
         working-directory: zed
