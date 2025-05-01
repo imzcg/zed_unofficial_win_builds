@@ -43,8 +43,7 @@ jobs:
               cat temp_diff.patch
               git apply temp_diff.patch
       -name: add config
-        run: |
-				    if [ -f ~/.cargo/config.toml ]; then echo "文件存在"; else echo "文件不存在，将创建该文件"; mkdir -p ~/.cargo; touch ~/.cargo/config.toml; fi; echo "[profile.release]" >> ~/.cargo/config.toml; echo "debug = false" >> ~/.cargo/config.toml; echo 'rustcflags = ["-C", "target-feature=+crt-static"]' >> ~/.cargo/config.toml; echo "内容已成功追加到 ~/.cargo/config.toml 文件中"
+        run: if [ -f ~/.cargo/config.toml ]; then echo "文件存在"; else echo "文件不存在，将创建该文件"; mkdir -p ~/.cargo; touch ~/.cargo/config.toml; fi; echo "[profile.release]" >> ~/.cargo/config.toml; echo "debug = false" >> ~/.cargo/config.toml; echo 'rustcflags = ["-C", "target-feature=+crt-static"]' >> ~/.cargo/config.toml; echo "内容已成功追加到 ~/.cargo/config.toml 文件中"
       - name: Build release
         working-directory: zed
         run: cargo build --release
